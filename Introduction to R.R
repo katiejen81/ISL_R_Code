@@ -1,5 +1,7 @@
 
-# ISLR Practice Code ------------------------------------------------------
+
+# Chapter 2 R Lab ---------------------------------------------------------
+
 
 # Get required packages
 install.packages("ISLR")
@@ -47,10 +49,55 @@ set.seed(2016)
 rnorm(50)
 rnorm(50)
 
-#looking at what the working directory is
+#looking at what the working directory is and making changes
 getwd()
+setwd("/home/katie/R/x86_64-pc-linux-gnu-library/3.2/ISLR_practice/")
 
 #I don't want that working directory. Let's change it
 
 #how to bring data in
 Auto <- read.csv("Auto.csv", header=T, na.strings="?")
+
+#let's learn more about this data
+dim(Auto)
+#this tells us how many observations and columns that we have
+
+#if we do some statistical analysis, we don't want missing data
+Auto <- na.omit(Auto)
+
+#names can give us the variable names that are in the dataset
+names(Auto)
+#of course we can assign those names to an object and use them
+#in a formula!
+
+#now let's do something with the data that we imported
+attach(Auto)
+plot(cylinders, mpg)
+
+#if we want to change a variable type from continuous
+#to discrete, we make it as.factor
+cylinders=as.factor(cylinders)
+
+#categorical or ordinal data will now plot by default into a
+#boxplot
+
+plot(cylinders, mpg)
+
+#we can also add some color and add other things
+plot(cylinders, mpg, col="red")
+plot(cylinders, mpg, col="red", varwidth=T, horizontal=T)
+plot(cylinders, mpg, col="red", varwidth=T, xlab="Cylinders"
+     , ylab="MPG")
+
+#hist is the histogram function
+hist(mpg)
+hist(mpg
+      , col=2)
+hist(mpg
+     , col=2
+     , breaks=15)
+
+#pairs is the scatterplot matrix function
+pairs(Auto)
+pairs(~mpg + displacement + horsepower + weight + acceleration
+      , Auto)
