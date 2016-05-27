@@ -89,6 +89,11 @@ plot(cylinders, mpg, col="red", varwidth=T, horizontal=T)
 plot(cylinders, mpg, col="red", varwidth=T, xlab="Cylinders"
      , ylab="MPG")
 
+#to save off the file as something
+jpeg("Figure.jpeg")
+plot(cylinders, mpg, col="red")
+dev.off()
+
 #hist is the histogram function
 hist(mpg)
 hist(mpg
@@ -101,3 +106,11 @@ hist(mpg
 pairs(Auto)
 pairs(~mpg + displacement + horsepower + weight + acceleration
       , Auto)
+
+#identify can be used identify the rows for the selected points
+identify(horsepower, mpg, name)
+
+#summary produces five number summaries for the data
+summary(Auto)
+summary(mpg)
+
