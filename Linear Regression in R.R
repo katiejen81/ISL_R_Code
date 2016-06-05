@@ -57,3 +57,23 @@ plot(lstat, medv, pch="+")
 
 #this tells us all of the plotting symbols available to us
 plot(1:20, 1:20, pch=1:20)
+
+#the par function allows us to panel our plots so that we
+#can see all of them together
+par(mfrow=c(2,2))
+
+#then we can apply the plot function to be able to look at 
+#the diagnostic plots that come with the regression output
+plot(lm.fit)
+
+#now let's look at the standardized residuals
+par(mfrow=c(1,1))
+plot(predict(lm.fit), residuals(lm.fit))
+plot(predict(lm.fit), rstudent(lm.fit))
+
+#let's look at the leverage statistic
+plot(hatvalues(lm.fit))
+
+#and let's find out which observation has the largest
+#leverage statistic
+which.max(hatvalues(lm.fit))
